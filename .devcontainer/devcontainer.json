@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
+// https://github.com/microsoft/vscode-dev-containers/tree/master/containers/docker-existing-dockerfile
+{
+    "name": "Python3",
+
+    // Sets the run context to one level up instead of the .devcontainer folder.
+    "context": "..",
+
+    "dockerFile": "Dockerfile",
+
+    // The optional 'runArgs' property can be used to specify additional runtime arguments.
+    "runArgs": [
+        // Mount Git stuff
+        // "-v", "${env:HOME}/.ssh:/root/.ssh-localhost:ro",
+        // "-v", "${env:HOME}/.gitconfig:/root/.gitconfig:ro",
+        // "-v", "${env:HOME}/.gitignore_global:/root/.gitignore_global:ro",
+        // "-v", "${env:HOME}/.ash_history:/root/.ash_history"
+    ],
+
+    "settings": {
+        // This will ignore your local shell user setting for Linux since shells like zsh are typically
+        // not in base container images. You can also update this to an specific shell to ensure VS Code
+        // uses the right one for terminals and tasks. For example, /bin/bash (or /bin/ash for Alpine).
+        "terminal.integrated.shell.linux": "/bin/ash",
+        // flake8 = pep8 + pyflakes + circular complexity checker
+        "python.linting.flake8Enabled": true,
+        // Python security scanner
+        "python.linting.banditEnabled": true,
+        "python.formatting.provider": "autopep8"
+    },
+
+    // "postCreateCommand": "cp -r ~/.ssh-localhost/* ~/.ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/*",
+
+    "extensions": [
+        "ms-python.python"
+    ]
+}
